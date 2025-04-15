@@ -1,0 +1,3 @@
+# ESTRUTURAS QUE DEVEM SER REVISADAS
+
+1 - Árvore B+
