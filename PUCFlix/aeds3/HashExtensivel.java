@@ -12,7 +12,7 @@ disciplina:
 Implementado pelo Prof. Marcos Kutova
 v1.1 - 2021
 */
-package Codigo.PUCFlix.aeds3;
+package aeds3;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

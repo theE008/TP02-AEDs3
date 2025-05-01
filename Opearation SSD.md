@@ -7,3 +7,4 @@ Acho que um cronograma seria bom.
 | S | S | D 
 |---|---|---
 |Decidir o que fazer | Fazer | Já ter feito, dormir
+|De manhazinha, implementar a classe atores | |

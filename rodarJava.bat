@@ -2,7 +2,12 @@
 
 git pull
 
-cls 
+cls
 
-javac Codigo/Principal.java 
-java  Codigo/Principal
+cd PUCFlix
+
+javac Principal.java
+
+java Principal
+
+cd ..

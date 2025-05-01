@@ -1,4 +1,4 @@
-package Codigo.PUCFlix.aeds3;
+package aeds3;
 public interface EntidadeArquivo {
     public void setID(int id);
     public int getID();
