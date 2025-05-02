@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////////////////////
 // PACOTE
 
@@ -13,8 +14,10 @@ import java.util.Scanner;
 // BIBLIOTECAS PRÓPRIAS
 
 import aeds3.*;
+import atuacao.Atuacao;
+import atores.*;
 import episodios.*;
-import series.*;
+import atuacoes.*;
 
 //////////////////////////////////////////////////
 // CLASSE MENUS
@@ -23,8 +26,8 @@ public class MenuAtuacoes
 {
     ArquivoAtuacoes arqAtuacoes = new ArquivoAtuacoes ();
     ArquivoAtores arqAtores = new ArquivoAtores ();
-    private static Scanner console = new Scanner(System.in);
-    MenuEpisodios menuEpisodio = new MenuEpisodios(); 
+    private static Scanner console = new Scanner (System.in);
+    MenuEpisodios menuEpisodio = new MenuEpisodios (); 
 
     public MenuAtuacoes () throws Exception 
     {
@@ -62,16 +65,16 @@ public class MenuAtuacoes
                     incluirAtuacao();
                     break;
                 case 2:
-                    buscarSerie();
+                    buscarAtuacao();
                     break;
                 case 3:
-                    alterarSerie();
+                    alterarAtuacao();
                     break;
                 case 4:
-                    excluirSerie();
+                    excluirAtuacao();
                     break;
                 case 5:
-                    mostrarEpSerie();
+                    mostrarEpAtuacao();
                     break;
                 case 0:
                     break;
@@ -82,75 +85,32 @@ public class MenuAtuacoes
         } while (opcao != 0);
     }
 
-    public void incluirAtuacao() 
+    public void incluirAtuacao (int id_serie) 
     {
-        System.out.println("\nInclusão de Atuações");
+        System.out.println ("\nInclusão de Atuações");
 
-        // DAQUI PRA BAIXO, NADA FEITO
+        String nome;
 
-        String nome, sinopse, streaming, genero;
-        short classificacaoIndicativa;
         LocalDate ano = null;
-        int anoAtual = LocalDate.now().getYear();
+        int anoAtual = LocalDate.now ().getYear ();
 
         do 
         {
-            System.out.print("Nome da Atuações (min. 4 letras): ");
-            nome = console.nextLine();
-        } while (nome.length() < 4);
-        do 
-        {
-            System.out.print("Gênero da Atuações (min. 4 letras): ");
-            genero = console.nextLine();
-        } while (genero.length() < 4);
-
-        System.out.print("Classificação indicativa da Atuações: ");
-        classificacaoIndicativa = console.nextShort();
-
-        boolean anoValido = false;
-        do 
-        {
-            System.out.print("Ano de lançamento (entre 1900 e " + anoAtual + "): ");
-            try 
-            {
-                int anoDigitado = Integer.parseInt(console.nextLine());
-                if (anoDigitado >= 1900 && anoDigitado <= anoAtual) 
-                {
-                    ano = LocalDate.of(anoDigitado, 1, 1);
-                    anoValido = true;
-                } else 
-                {
-                    System.err.println("Ano inválido! Insira um ano entre 1900 e " + anoAtual + ".");
-                }
-            } catch (NumberFormatException e) 
-            {
-                System.err.println("Ano inválido! Insira um valor numérico.");
-            }
-        } while (!anoValido);
-
+            System.out.print ("Nome do Ator (min. 4 letras): ");
+            nome = console.nextLine ();
+        } while (nome.length () < 4);
         
-        do 
-        {
-            System.out.print("Sinopse (min. 10 letras): ");
-            sinopse = console.nextLine();
-        } while (sinopse.length() < 10);
-
-        
-        do 
-        {
-            System.out.print("Streaming (min. 3 letras): ");
-            streaming = console.nextLine();
-        } while (streaming.length() < 3);
-
         System.out.print("\nConfirma a inclusão da Atuações? (S/N) ");
         char resp = console.nextLine().charAt(0);
         if (resp == 'S' || resp == 's') 
         {
             try 
             {
-                Serie s = new Serie(nome, ano, sinopse, streaming, genero, classificacaoIndicativa);
-                arqAtuacoes.create(s);
-                System.out.println("Atuações incluída com sucesso.");
+                Ator ator = new Ator (nome);
+                int id_ator = arqAtores.create (ator);
+                Atuacao a = new Atuacao (id_ator, id_Atuacao);
+                arqAtuacoes.create(a);
+                System.out.println("Ator incluído com sucesso.");
             } catch (Exception e) 
             {
                 System.out.println("Erro ao incluir Atuações.");
@@ -159,27 +119,27 @@ public class MenuAtuacoes
     }
 
     
-    public void buscarSerie() 
+    public void buscarAtuacao () 
     {
         System.out.println("\nBusca de Atuações");
 
-        System.out.print("Nome da Atuações: ");
+        System.out.print("Nome do Ator: ");
         String nome = console.nextLine();
 
         System.out.println();
         try 
         {
-            Serie[] series = arqAtuacoes.readNome(nome);
-            if (series != null && series.length > 0) 
+            Atuacao [] atuacoes = arqAtuacoes.readNome (nome);
+            if (atuacoes != null && atuacoes.length > 0) 
             {
-                System.out.println("Atuaçõess encontradas:");
-                for (Serie s : series) 
+                System.out.println("Atores encontrados: ");
+                for (Atuacao s : atuacoes) 
                 {
-                    mostrarSerie(s);
+                    mostrarAtuacao (s);
                 }
             } else 
             {
-                System.out.println("Nenhuma Atuações encontrada com esse nome.");
+                System.out.println("Nenhum Ator encontrado com esse nome.");
             }
             
         } catch (Exception e) 
@@ -189,38 +149,38 @@ public class MenuAtuacoes
     }
 
 
-    public void alterarSerie() throws Exception 
+    public void alterarAtuacao() throws Exception 
     {
         System.out.println("\nAlteração de Atuações");
 
-        System.out.print("Nome da Atuações: ");
+        System.out.print("Nome do Ator: ");
         String nome = console.nextLine();
         System.out.println();
 
         try 
         {
-            Serie[] serie = arqAtuacoes.readNome(nome);
-            if (serie != null) 
+            Atuacao [] Atuacao = arqAtuacoes.readNome (nome);
+            if (Atuacao != null) 
             {
                 
-                for (int i=0; i < serie.length; i++) 
+                for (int i=0; i < Atuacao.length; i++) 
                 {
                     System.out.println("\t[" + i + "]");
-                    mostrarSerie(serie[i]);
+                    mostrarAtuacao (Atuacao[i]);
                 }
 
-                System.out.print("Digite o número da Atuações a ser atualizada: ");
+                System.out.print("Digite o número do Ator a ser atualizado: ");
                 int num = console.nextInt();
                 console.nextLine();
 
                 
-                if (num >= 0 && serie[num] != null) 
+                if (num >= 0 && Atuacao[num] != null) 
                 {
                     System.out.print("Novo nome (ou Enter para manter): ");
                     String novoNome = console.nextLine();
                     if (!novoNome.isEmpty()) 
                     {
-                        serie[num].setNome(novoNome);
+                        Atuacao[num].setNome(novoNome);
                     }
 
                     System.out.print("Novo ano de lançamento (ou Enter para manter): ");
@@ -228,40 +188,40 @@ public class MenuAtuacoes
                     if (!ano.isEmpty()) 
                     {
                         LocalDate anoS = LocalDate.parse(ano + "-01-01"); 
-                        serie[num].setAnoLancamento(anoS);
+                        Atuacao[num].setAnoLancamento(anoS);
                     }
 
                     System.out.print("Nova sinopse (ou Enter para manter): ");
                     String novaSinopse = console.nextLine();
                     if (!novaSinopse.isEmpty()) 
                     {
-                        serie[num].setSinopse(novaSinopse);
+                        Atuacao[num].setSinopse(novaSinopse);
                     }
 
                     System.out.print("Novo streaming (ou Enter para manter): ");
                     String novoStreaming = console.nextLine();
                     if (!novoStreaming.isEmpty()) 
                     {
-                        serie[num].setStreaming(novoStreaming);
+                        Atuacao[num].setStreaming(novoStreaming);
                     }
 
                     System.out.print("Novo genero (ou Enter para manter): ");
                     String novogenero = console.nextLine();
                     if (!novoStreaming.isEmpty()) 
                     {
-                        serie[num].setGenero(novogenero);
+                        Atuacao[num].setGenero(novogenero);
                     }
 
                     System.out.print("Nova classificação indicada (ou Enter para manter): ");
                     short novoclassificacaoIndicativa = console.nextShort();
-                    serie[num].setClassificacaoIndicativa(novoclassificacaoIndicativa);
+                    Atuacao[num].setClassificacaoIndicativa(novoclassificacaoIndicativa);
         
                     System.out.print("\nConfirma as alterações? (S/N) ");
                     char resp = console.nextLine().charAt(0);
 
                     if (resp == 'S' || resp == 's') 
                     {
-                        boolean alterado = arqAtuacoes.update(serie[num]);
+                        boolean alterado = arqAtuacoes.update(Atuacao[num]);
                         if (alterado) 
                         {
                             System.out.println("Atuações alterada com sucesso!");
@@ -275,7 +235,7 @@ public class MenuAtuacoes
                     }
                 } else 
                 {
-                    System.out.println("Não há serie associada a esse número.");
+                    System.out.println("Não há Atuacao associada a esse número.");
                 }
             } else 
             {
@@ -288,7 +248,7 @@ public class MenuAtuacoes
     }
 
     
-    public void excluirSerie() throws Exception 
+    public void excluirAtuacao() throws Exception 
     {
         System.out.println("\nExclusão de Atuações");
         
@@ -298,13 +258,13 @@ public class MenuAtuacoes
 
         try 
         {
-            Serie[] serie = arqAtuacoes.readNome(nome);
-            if (serie != null && serie.length > 0) 
+            Atuacao[] Atuacao = arqAtuacoes.readNome(nome);
+            if (Atuacao != null && Atuacao.length > 0) 
             {
-                for (int i=0; i < serie.length; i++) 
+                for (int i=0; i < Atuacao.length; i++) 
                 {
                     System.out.println("\t[" + i + "]");
-                    mostrarSerie(serie[i]);
+                    mostrarAtuacao(Atuacao[i]);
                 }
 
                 System.out.print("Digite o número da Atuações a ser excluída: ");
@@ -312,9 +272,9 @@ public class MenuAtuacoes
                 console.nextLine();
 
             
-                if (num >= 0 && serie[num] != null) 
+                if (num >= 0 && Atuacao[num] != null) 
                 {
-                    Episodio[] episodios = arqAtores.readEpisodiosSerie(serie[num].getID());
+                    Episodio[] episodios = arqAtores.readEpisodiosAtuacao(Atuacao[num].getID());
                     if (episodios != null) 
                     {
                         System.out.print("Essa Atuações possui episódios vinculados, deseja excluir mesmo assim? (S/N) ");
@@ -329,7 +289,7 @@ public class MenuAtuacoes
                         return;
                     }
                     
-                    boolean excluido = arqAtuacoes.delete(serie[num].getID());
+                    boolean excluido = arqAtuacoes.delete(Atuacao[num].getID());
                     if (excluido) 
                     {
                         System.out.println("Atuações excluída com sucesso!.");
@@ -339,7 +299,7 @@ public class MenuAtuacoes
                     }
                 } else 
                 {
-                    System.out.println("Não há serie associada a esse número.");
+                    System.out.println("Não há Atuacao associada a esse número.");
                 }
             } else 
             {
@@ -351,12 +311,12 @@ public class MenuAtuacoes
         }
     }
 
-    public void mostrarEpSerie() 
+    public void mostrarEpAtuacao() 
     {
         System.out.println("\nBusca de episódio:");
         System.out.print("De qual Atuações deseja buscar o episódio? (Nome da Atuações): ");
         
-        String nomeSerieVinculada = console.nextLine();
+        String nomeAtuacaoVinculada = console.nextLine();
         System.out.println();
         boolean dadosCorretos = false;
         
@@ -364,15 +324,15 @@ public class MenuAtuacoes
         {
             try 
             {
-                Serie[] series = arqAtuacoes.readNome(nomeSerieVinculada);
+                Atuacao[] atuacoes = arqAtuacoes.readNome(nomeAtuacaoVinculada);
                 
-                if (series != null && series.length > 0) 
+                if (atuacoes != null && atuacoes.length > 0) 
                 {
                     System.out.println("Atuaçõess encontradas:");
-                    for (int i = 0; i < series.length; i++) 
+                    for (int i = 0; i < atuacoes.length; i++) 
                     {
                         System.out.print("[" + i + "] ");
-                        mostrarSerie(series[i]);
+                        mostrarAtuacao(atuacoes[i]);
                     }
                     
                     System.out.print("\nDigite o número da Atuações escolhida: ");
@@ -381,13 +341,13 @@ public class MenuAtuacoes
                         int num = console.nextInt();
                         console.nextLine();
                         
-                        if (num < 0 || num >= series.length) 
+                        if (num < 0 || num >= atuacoes.length) 
                         {
                             System.err.println("Número inválido!");
                         } else 
                         {
-                            System.out.println("Episódios da Atuações " + series[num].getNome() + ":");
-                            Episodio[] episodios = arqAtores.readEpisodiosSerie(series[num].getID());
+                            System.out.println("Episódios da Atuações " + atuacoes[num].getNome() + ":");
+                            Episodio[] episodios = arqAtores.readEpisodiosAtuacao(atuacoes[num].getID());
                             
                             if (episodios != null && episodios.length > 0) 
                             {
@@ -424,27 +384,28 @@ public class MenuAtuacoes
         } while (!dadosCorretos);
     }
 
-    public static void mostrarSerie (Serie serie)
+    public static void mostrarAtuacao (Atuacao Atuacao)
     {
-        System.out.println ( "| > \""         + serie.getNome ()          + "\" " + serie.getGenero () + " " + serie.getClassificacaoIndicativaColorida ()       + "\n" +
-                   "| "             + serie.getSinopse ()            + "\n" +
-                   "| Lançado em: " + serie.getAnoLancamento().toString () + " - no streaming: " + serie.getStreaming()+ " - ID: " +  serie.getID ());
+        System.out.println ( "| > \""         + Atuacao.getNome ()          + "\" " + Atuacao.getGenero () + " " + Atuacao.getClassificacaoIndicativaColorida ()       + "\n" +
+                   "| "             + Atuacao.getSinopse ()            + "\n" +
+                   "| Lançado em: " + Atuacao.getAnoLancamento().toString () + " - no streaming: " + Atuacao.getStreaming()+ " - ID: " +  Atuacao.getID ());
     }
 
     public void povoar () throws Exception 
     {
-        arqAtuacoes.create(new Serie("Fullmetal Alchemist: Brotherhood", LocalDate.of(2009, 4, 5), "Dois irmãos usam alquimia para tentar recuperar o que perderam, enfrentando consequências sombrias.", "Crunchyroll", "Ação/Fantasia", (short) 14));
-        arqAtuacoes.create(new Serie("Stranger Things", LocalDate.of(2017, 1, 10), "Crianças enfrentam forças sobrenaturais em uma pequena cidade.", "Netflix", "Sobrenatural/Mistério", (short) 14));
-        arqAtuacoes.create(new Serie("Shingeki no Kyojin (Attack on Titan)", LocalDate.of(2013, 4, 6), "Humanos lutam pela sobrevivência contra gigantes devoradores em um mundo brutal.", "Crunchyroll", "Ação/Fantasia", (short) 16));
-        arqAtuacoes.create(new Serie("Kimetsu no Yaiba (Demon Slayer)", LocalDate.of(2019, 4, 6), "Tanjiro se torna caçador de demônios para salvar sua irmã e vingar sua família.", "Crunchyroll", "Ação/Sobrenatural", (short) 14));
-        arqAtuacoes.create(new Serie("Boku no Hero Academia (My Hero Academia)", LocalDate.of(2016, 4, 3), "Em um mundo de heróis com superpoderes, um garoto sem poderes sonha em se tornar símbolo da paz.", "Crunchyroll", "Ação/Super-heróis", (short) 12));
-        arqAtuacoes.create(new Serie("Steins;Gate", LocalDate.of(2011, 4, 6), "Cientistas acidentais descobrem uma maneira de enviar mensagens ao passado, afetando o futuro.", "Funimation", "Ficção Científica/Thriller", (short) 14));
-        arqAtuacoes.create(new Serie("Tokyo Revengers", LocalDate.of(2021, 4, 11), "Um jovem volta no tempo para impedir a morte de sua ex-namorada e mudar o rumo da sua vida.", "Crunchyroll", "Ação/Drama", (short) 16));
-        arqAtuacoes.create(new Serie("Jujutsu Kaisen", LocalDate.of(2020, 10, 3), "Estudantes enfrentam maldições perigosas para proteger a humanidade.", "Crunchyroll", "Ação/Sobrenatural", (short) 16));
-        arqAtuacoes.create(new Serie("Psycho-Pass", LocalDate.of(2012, 10, 12), "Em um futuro distópico, a justiça é decidida por um sistema que mede a mente humana.", "Crunchyroll", "Ficção Científica/Policial", (short) 18));
-        arqAtuacoes.create(new Serie("Black Mirror", LocalDate.of(2015, 10, 25), "Cada episódio apresenta uma história distópica sobre o impacto da tecnologia.", "Netflix", "Ficção Científica/Drama", (short) 18));
+        arqAtuacoes.create(new Atuacao("Fullmetal Alchemist: Brotherhood", LocalDate.of(2009, 4, 5), "Dois irmãos usam alquimia para tentar recuperar o que perderam, enfrentando consequências sombrias.", "Crunchyroll", "Ação/Fantasia", (short) 14));
+        arqAtuacoes.create(new Atuacao("Stranger Things", LocalDate.of(2017, 1, 10), "Crianças enfrentam forças sobrenaturais em uma pequena cidade.", "Netflix", "Sobrenatural/Mistério", (short) 14));
+        arqAtuacoes.create(new Atuacao("Shingeki no Kyojin (Attack on Titan)", LocalDate.of(2013, 4, 6), "Humanos lutam pela sobrevivência contra gigantes devoradores em um mundo brutal.", "Crunchyroll", "Ação/Fantasia", (short) 16));
+        arqAtuacoes.create(new Atuacao("Kimetsu no Yaiba (Demon Slayer)", LocalDate.of(2019, 4, 6), "Tanjiro se torna caçador de demônios para salvar sua irmã e vingar sua família.", "Crunchyroll", "Ação/Sobrenatural", (short) 14));
+        arqAtuacoes.create(new Atuacao("Boku no Hero Academia (My Hero Academia)", LocalDate.of(2016, 4, 3), "Em um mundo de heróis com superpoderes, um garoto sem poderes sonha em se tornar símbolo da paz.", "Crunchyroll", "Ação/Super-heróis", (short) 12));
+        arqAtuacoes.create(new Atuacao("Steins;Gate", LocalDate.of(2011, 4, 6), "Cientistas acidentais descobrem uma maneira de enviar mensagens ao passado, afetando o futuro.", "Funimation", "Ficção Científica/Thriller", (short) 14));
+        arqAtuacoes.create(new Atuacao("Tokyo Revengers", LocalDate.of(2021, 4, 11), "Um jovem volta no tempo para impedir a morte de sua ex-namorada e mudar o rumo da sua vida.", "Crunchyroll", "Ação/Drama", (short) 16));
+        arqAtuacoes.create(new Atuacao("Jujutsu Kaisen", LocalDate.of(2020, 10, 3), "Estudantes enfrentam maldições perigosas para proteger a humanidade.", "Crunchyroll", "Ação/Sobrenatural", (short) 16));
+        arqAtuacoes.create(new Atuacao("Psycho-Pass", LocalDate.of(2012, 10, 12), "Em um futuro distópico, a justiça é decidida por um sistema que mede a mente humana.", "Crunchyroll", "Ficção Científica/Policial", (short) 18));
+        arqAtuacoes.create(new Atuacao("Black Mirror", LocalDate.of(2015, 10, 25), "Cada episódio apresenta uma história distópica sobre o impacto da tecnologia.", "Netflix", "Ficção Científica/Drama", (short) 18));
     }
 
 }
+*/
 
 //////////////////////////////////////////////////
