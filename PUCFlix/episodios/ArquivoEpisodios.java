@@ -1,9 +1,17 @@
+//////////////////////////////////////////////////
+// PACOTE
+
 package episodios;
+
+//////////////////////////////////////////////////
+// BIBLIOTECAS DO SISTEMA
+
 import aeds3.*;
 import series.*;
 import java.util.ArrayList;
 
-//Ideia printar a avaliação da serie, que será a media das avaliações dos seus episodios
+//////////////////////////////////////////////////
+// CLASSE ARQUIVO EPISODIOS
 
 public class ArquivoEpisodios extends Arquivo<Episodio> 
 {
@@ -159,3 +167,4 @@ public class ArquivoEpisodios extends Arquivo<Episodio>
   }
 }
 
+//////////////////////////////////////////////////

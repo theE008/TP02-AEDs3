@@ -20,13 +20,13 @@ import series.*;
 
 public class MenuEpisodios 
 {
-    ArquivoEpisodios arquivoEpsodio;
+    ArquivoAtores arquivoEpsodio;
     ArquivoSeries arquivoSeries;
     private static Scanner console = new Scanner (System.in);
 
     public MenuEpisodios () throws Exception 
     {
-        arquivoEpsodio = new ArquivoEpisodios ();
+        arquivoEpsodio = new ArquivoAtores ();
         arquivoSeries = new ArquivoSeries ();
     }
 
