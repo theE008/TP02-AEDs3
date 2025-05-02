@@ -88,7 +88,7 @@ public class Atuacao implements EntidadeArquivo
     public boolean equals (Object obj)
     {
             return (this.getID () == ((Atuacao) obj).getID ());
-        }
+    }
 
     // @Override
     public int compareTo (Atuacao outro) 

@@ -96,30 +96,30 @@ public class ArquivoEpisodios extends Arquivo<Episodio>
       return null;
   }
   
-  public Episodio[] readEpisodiosSerie(int id_serie) throws Exception
+  public Episodio [] readEpisodiosSerie (int id_serie) throws Exception
   {
-    ArrayList<ParIdId> pIds = indiceIdEpisodio_IdSerie.read(new ParIdId(id_serie, -1));
+    ArrayList <ParIdId> pIds = indiceIdEpisodio_IdSerie.read (new ParIdId (id_serie, -1));
   
-    if(pIds.size() > 0)
+    if(pIds.size () > 0)
     {
-      Episodio[] episodios = new Episodio[pIds.size()];
+      Episodio [] episodios = new Episodio[pIds.size ()];
       int i = 0;
       for(ParIdId pID : pIds)
-        episodios[i++] = read(pID.getId_agregado());
+        episodios [i++] = read (pID.getId_agregado ());
       return episodios;
     }else
       return null;
   }
 
   @Override
-  public boolean delete(int id) throws Exception
+  public boolean delete (int id) throws Exception
   {
-    Episodio e = read(id);
-    if(e != null)
+    Episodio e = read (id);
+    if (e != null)
     {
-      if(super.delete(id))
-        return indiceIdEpisodio_IdSerie.delete(new ParIdId(e.getID_serie(), id)) 
-            && indiceNomeEpisodio.delete(new ParTituloId(e.getNome(), id));
+      if (super.delete (id))
+        return indiceIdEpisodio_IdSerie.delete (new ParIdId (e.getID_serie (), id)) 
+            && indiceNomeEpisodio.delete (new ParTituloId (e.getNome (), id));
     }
     return false;
   }
