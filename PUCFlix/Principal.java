@@ -39,7 +39,7 @@ public class Principal
                 System.out.print("\nOpção: ");
                 try 
                 {
-                    opcao = Integer.valueOf(console.nextLine());
+                    opcao = Integer.valueOf(console.nextLine ());
                 } 
                 catch(NumberFormatException e) 
                 {

@@ -125,7 +125,7 @@ public class Episodio implements EntidadeArquivo
   // @Override
   public int compareTo(Episodio outro) 
   {
-      return Integer.compare(this.id, outro.id);
+      return Integer.compare(this.id, outro.getID ());
   }
 }
 
