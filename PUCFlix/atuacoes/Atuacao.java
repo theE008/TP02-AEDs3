@@ -79,7 +79,7 @@ public class Atuacao implements EntidadeArquivo
     }
 
     // Strings e comparações
-    public String toString()
+    public String toString ()
     {
         return "(" + id + ":" + id_ator + "@" + id_serie + ")";
     }

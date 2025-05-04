@@ -2,7 +2,6 @@ package atuacoes;
 
 import java.util.Scanner;
 
-import atores.Ator;
 import atores.*;
 import series.*;
 
@@ -234,13 +233,13 @@ public class MenuAtuacao {
                 Ator[] atores = arqAtores.readNome(nomeAtorVinculado);
                 
                 if (atores != null && atores.length > 0) {
-                    System.out.println("Séries encontradas:");
+                    System.out.println("Atores encontrados:");
                     for (int i = 0; i < atores.length; i++) {
-                        System.out.print("[" + i + "] ");
-                        mostraAtor(atores[i]);
+                        System.out.print("\n[" + i + "] \n");
+                        System.out.println (atores[i]);
                     }
                     
-                    System.out.print("\nDigite o número do ator escolhida: ");
+                    System.out.print("\nDigite o número do ator escolhido: ");
                     if (console.hasNextInt()) {
                         int num = console.nextInt();
                         console.nextLine(); // Limpar buffer
@@ -252,17 +251,10 @@ public class MenuAtuacao {
                             Serie[] series = arqAtores.readSerieDoAtor(atores[num].getID());
                             
                             if (series != null && series.length > 0) {
-                                for (Serie se : series) {
+                                for (Serie se : series) 
+                                {
                                     System.out.println();
-                                    mostraSerie(se);
-
-                                    Atuacao[] Atuacao = arqAtuacao.read(atores[num].getID(), se.getID());
-                                    if (Atuacao != null && Atuacao.length > 0) {
-                                        System.out.println("Fazendo o papel de: ");
-                                        for(Atuacao at : Atuacao) {
-                                            mostraAtuacao(at);
-                                        }
-                                    }
+                                    if (se != null) System.out.println(se);
                                 }
                             } else {
                                 System.out.println("Nenhum série encontrado para esta ator.");
@@ -295,34 +287,31 @@ public class MenuAtuacao {
 
     }
 
-    //Mostrar Papel
-    public void mostraAtuacao(Atuacao Atuacao) {
-        if (Atuacao != null) {
-            System.out.println("----------------------");
-            System.out.println("----------------------");
-        }
+public void povoar () throws Exception
+{
+    int id_edward = arqAtores.create(new Ator("Edward Elric"));
+    int id_alphonse = arqAtores.create(new Ator("Alphonse Elric"));
+    int id_eleven = arqAtores.create(new Ator("Eleven"));
+    int id_eren = arqAtores.create(new Ator("Eren Yeager"));
+    int id_tanjiro = arqAtores.create(new Ator("Tanjiro Kamado"));
+    int id_deku = arqAtores.create(new Ator("Izuku Midoriya"));
+    int id_okabe = arqAtores.create(new Ator("Rintarou Okabe"));
+    int id_takemichi = arqAtores.create(new Ator("Takemichi Hanagaki"));
+    int id_itadori = arqAtores.create(new Ator("Yuji Itadori"));
+    int id_akane = arqAtores.create(new Ator("Akane Tsunemori"));
+    int id_varios = arqAtores.create(new Ator("Elenco Variado"));
 
-    }
+    arqAtuacao.create(new Atuacao(id_edward, 1));
+    arqAtuacao.create(new Atuacao(id_alphonse, 1));
+    arqAtuacao.create(new Atuacao(id_eleven, 2));
+    arqAtuacao.create(new Atuacao(id_eren, 3)); 
+    arqAtuacao.create(new Atuacao(id_tanjiro, 4));
+    arqAtuacao.create(new Atuacao(id_deku, 5));
+    arqAtuacao.create(new Atuacao(id_okabe, 6));
+    arqAtuacao.create(new Atuacao(id_takemichi, 7));
+    arqAtuacao.create(new Atuacao(id_itadori, 8));
+    arqAtuacao.create(new Atuacao(id_akane, 9));
+    arqAtuacao.create(new Atuacao(id_varios, 10));
+}
 
-    //Mostrar Série
-    public void mostraSerie(Serie serie) {
-        if (serie != null) {
-            System.out.println("----------------------");
-            System.out.printf("Nome....: %s%n", serie.getNome());
-            System.out.printf("Ano lançamento: %d%n", serie.getAnoLancamento().getYear());
-            System.out.printf("Sinopse....: %s%n", serie.getSinopse());
-            System.out.printf("Streaming.....: %s%n", serie.getStreaming());
-            System.out.printf("Gênero.....: %s%n", serie.getGenero());
-            System.out.println("----------------------");
-        }
-    }
-
-
-    public void povoar() throws Exception {
-
-        // fazer dps
-
-        System.out.println ("Fazer dps");
-
-    }
 }

@@ -108,7 +108,7 @@ public class MenuEpisodios
                         for (int i = 0; i < series.length; i++) 
                         {
                             System.out.println ("\t[" + i + "]");
-                            MenuSeries.mostrarSerie (series[i]);
+                            System.out.println (series[i]);
                         }
 
                         System.out.print ("\nDigite o número da série a ser vinculada: ");
@@ -236,7 +236,7 @@ public class MenuEpisodios
                     for(int i = 0; i < series.length; i++)
                     {
                         System.out.println ("\t[" + i + "]");
-                        MenuSeries.mostrarSerie (series[i]);
+                        System.out.println (series[i]);
                     }
                         
                     System.out.print ("\nDigite o número da série escolhida: ");
@@ -256,7 +256,7 @@ public class MenuEpisodios
                             {
                                 for (Episodio ep : episodios) 
                                 {
-                                    mostraEpisodio(ep);
+                                    System.out.println (ep);
                                     dadosCorretos = true;
                                 }
                             }else
@@ -300,7 +300,7 @@ public class MenuEpisodios
                 for(int i = 0; i < series.length; i++)
                 {
                     System.out.println ("\t[" + i + "]");
-                    MenuSeries.mostrarSerie (series[i]);
+                    System.out.println (series[i]);
                 }
 
                 System.out.print ("\nDigite o número da série escolhida: ");
@@ -318,7 +318,7 @@ public class MenuEpisodios
                         for (int i = 0; i < episodio.length; i++) 
                         {
                             System.out.println ("\t[" + i + "]");
-                            mostraEpisodio(episodio[i]);
+                            System.out.println (episodio[i]);
                         }
                         System.out.print ("\nDigite o número do episódio a ser excluído: ");
                         int num2 = console.nextInt ();
@@ -384,7 +384,7 @@ public class MenuEpisodios
             for (int i = 0; i < series.length; i++) 
             {
                 System.out.println ("\t[" + i + "]");
-                MenuSeries.mostrarSerie (series[i]);
+                System.out.println (series[i]);
             }
             
             int numSerie;
@@ -411,7 +411,7 @@ public class MenuEpisodios
             for (int i = 0; i < episodios.length; i++) 
             {
                 System.out.println ("\t[" + i + "]");
-                mostraEpisodio(episodios[i]);
+                System.out.println (episodios[i]);
             }
             
             int numEpisodio;
@@ -429,7 +429,7 @@ public class MenuEpisodios
             
             Episodio episodioEncontrado = episodios[numEpisodio];
             System.out.println ("Episódio encontrado: ");
-            mostraEpisodio(episodioEncontrado);
+            System.out.println (episodioEncontrado);
             
             do {
                 System.out.print ("Novo nome do episodio (min. de 4 letras) (ou Enter para manter): ");
@@ -543,15 +543,6 @@ public class MenuEpisodios
             System.out.println ("Erro do sistema. Não foi possível alterar o episódio! " + e.getMessage ());
             e.printStackTrace ();
         }
-    }
-    
-    
-    public void mostraEpisodio (Episodio episodio) 
-    {
-        System.out.println ( "| > \""         + episodio.getNome ()   + "\" Duração: "  + episodio.getMinutos ()/60 + ":" + ((episodio.getMinutos ()%60 < 10)?"0":"") + episodio.getMinutos ()%60 + ":00\n" +
-        "| Episódio da " + episodio.getTemporada ()  +   " temporada\n" +
-        "| "             + episodio.getDescricao ()     +                                 "\n" +
-        "| Lançado em: "                   + episodio.getLancamento ().toString ()        + " - ID: "     + episodio.getID () + "@" + episodio.getID_serie ());
     }
 
     public void povoar() throws Exception 

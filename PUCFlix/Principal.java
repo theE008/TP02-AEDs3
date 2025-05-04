@@ -65,6 +65,7 @@ public class Principal
                     case 4:
                         (new MenuSeries ()).povoar ();
                         (new MenuEpisodios ()).povoar ();
+                        (new MenuAtuacao ()).povoar ();
                     break;
 
                     case 0:

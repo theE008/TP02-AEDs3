@@ -1,11 +1,23 @@
+//////////////////////////////////////////////////
+// PACOTE
+
 package atores;
 
-import aeds3.*;
-//import atores.Ator;
-import series.*;
+//////////////////////////////////////////////////
+// BIBLIOTECAS DO SISTEMA
+
+
 import java.util.ArrayList;
 
+//////////////////////////////////////////////////
+// BIBLIOTECAS PRÓPRIAS
+
+import aeds3.*;
+import series.*;
 import atuacoes.*;
+//////////////////////////////////////////////////
+// IMPLEMENTAÇÃO DE ATOR
+
 
 public class ArquivoAtor extends Arquivo<Ator> {
 
@@ -133,3 +145,5 @@ public class ArquivoAtor extends Arquivo<Ator> {
     }
     
 }
+
+//////////////////////////////////////////////////

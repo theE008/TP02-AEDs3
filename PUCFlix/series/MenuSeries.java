@@ -12,9 +12,9 @@ import java.util.Scanner;
 //////////////////////////////////////////////////
 // BIBLIOTECAS PRÓPRIAS
 
-import aeds3.*;
+//import aeds3.*;
 import episodios.*;
-import series.*;
+//import series.*;
 
 //////////////////////////////////////////////////
 // CLASSE MENUS
@@ -172,7 +172,7 @@ public class MenuSeries
                 System.out.println("Séries encontradas:");
                 for (Serie s : series) 
                 {
-                    mostrarSerie(s);
+                    System.out.println (s);
                 }
             } else 
             {
@@ -203,7 +203,7 @@ public class MenuSeries
                 for (int i=0; i < serie.length; i++) 
                 {
                     System.out.println("\t[" + i + "]");
-                    mostrarSerie(serie[i]);
+                    System.out.println (serie[i]);
                 }
 
                 System.out.print("Digite o número da série a ser atualizada: ");
@@ -301,7 +301,7 @@ public class MenuSeries
                 for (int i=0; i < serie.length; i++) 
                 {
                     System.out.println("\t[" + i + "]");
-                    mostrarSerie(serie[i]);
+                    System.out.println (serie[i]);
                 }
 
                 System.out.print("Digite o número da série a ser excluída: ");
@@ -369,7 +369,7 @@ public class MenuSeries
                     for (int i = 0; i < series.length; i++) 
                     {
                         System.out.print("[" + i + "] ");
-                        mostrarSerie(series[i]);
+                        System.out.println (series[i]);
                     }
                     
                     System.out.print("\nDigite o número da série escolhida: ");
@@ -395,7 +395,7 @@ public class MenuSeries
                                         temporadaAtual = ep.getTemporada();
                                         System.out.println("\nTemporada " + temporadaAtual + ":");
                                     }
-                                    menuEpisodio.mostraEpisodio(ep);
+                                    System.out.println (ep);
                                 }
                             } else 
                             {
@@ -421,13 +421,6 @@ public class MenuSeries
         } while (!dadosCorretos);
     }
 
-    public static void mostrarSerie (Serie serie)
-    {
-        System.out.println ( "| > \""         + serie.getNome ()          + "\" " + serie.getGenero () + " " + serie.getClassificacaoIndicativaColorida ()       + "\n" +
-                   "| "             + serie.getSinopse ()            + "\n" +
-                   "| Lançado em: " + serie.getAnoLancamento().toString () + " - no streaming: " + serie.getStreaming()+ " - ID: " +  serie.getID ());
-    }
-
     public void povoar () throws Exception 
     {
         arqSeries.create(new Serie("Fullmetal Alchemist: Brotherhood", LocalDate.of(2009, 4, 5), "Dois irmãos usam alquimia para tentar recuperar o que perderam, enfrentando consequências sombrias.", "Crunchyroll", "Ação/Fantasia", (short) 14));
@@ -440,7 +433,7 @@ public class MenuSeries
         arqSeries.create(new Serie("Jujutsu Kaisen", LocalDate.of(2020, 10, 3), "Estudantes enfrentam maldições perigosas para proteger a humanidade.", "Crunchyroll", "Ação/Sobrenatural", (short) 16));
         arqSeries.create(new Serie("Psycho-Pass", LocalDate.of(2012, 10, 12), "Em um futuro distópico, a justiça é decidida por um sistema que mede a mente humana.", "Crunchyroll", "Ficção Científica/Policial", (short) 18));
         arqSeries.create(new Serie("Black Mirror", LocalDate.of(2015, 10, 25), "Cada episódio apresenta uma história distópica sobre o impacto da tecnologia.", "Netflix", "Ficção Científica/Drama", (short) 18));
-    }
+    } 
 
 }
 

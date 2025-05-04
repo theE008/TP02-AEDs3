@@ -75,10 +75,12 @@ public class Ator implements EntidadeArquivo
     }
 
     // Strings e comparações
-    public String toString()
+    @Override
+    public String toString ()
     {
-        return "Ator = [ID: " + id +
-                "\nNome: " + nome + "]";
+        return "\n| >\""  + nome + "\"" +
+               "\n| Ator" +
+               "\n| ID: " + id;
     }
 
     @Override

@@ -123,13 +123,9 @@ public class Serie implements EntidadeArquivo
 
     public String toString ()
     {
-        return "Série = [ID: " + id +
-                "\nNome: " + nome +
-                "\nAno de lançamento: " + anoLancamento +
-                "\nSinopse " + sinopse + 
-                "\nStreaming: " + streaming + 
-                "\nGênero: " + genero + 
-                "\nClassificação Indicativa: " + classificacaoIndicativa + "]";
+        return "\n| > \""         + this.getNome ()          + "\" " + this.getGenero () + " " + this.getClassificacaoIndicativaColorida ()       + "\n" +
+        "| "             + this.getSinopse ()            + "\n" +
+        "| Lançado em: " + this.getAnoLancamento().toString () + " - no streaming: " + this.getStreaming()+ " - ID: " +  this.getID ();
     }
 
     @Override

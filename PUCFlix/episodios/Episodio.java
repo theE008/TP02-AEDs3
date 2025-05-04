@@ -106,13 +106,10 @@ public class Episodio implements EntidadeArquivo
 
   public String toString()
   {
-    return "Episodio = [ID: " + id +
-            "\nNome: " + nome +
-            "\nTemporada: " + temporada +
-            "\nData de lançamento: " + lancamento +
-            "\nDuração: " + minutos + 
-            "\nDescrição: " + descricao + 
-            "\nSerie: " + id_serie +  "]";
+    return "\n| > \""         + this.getNome ()   + "\" Duração: "  + this.getMinutos ()/60 + ":" + ((this.getMinutos ()%60 < 10)?"0":"") + this.getMinutos ()%60 + ":00\n" +
+    "| Episódio da " + this.getTemporada ()  +   " temporada\n" +
+    "| "             + this.getDescricao ()     +                                 "\n" +
+    "| Lançado em: "                   + this.getLancamento ().toString ()        + " - ID: "     + this.getID () + "@" + this.getID_serie ();
   }
 
 

@@ -6,8 +6,8 @@ Acho que um cronograma seria bom.
 
 | S | S | D 
 |---|---|---
-|Decidir o que fazer | Fazer | Já ter feito, dormir
-|De manhazinha, implementar a classe atores | |
+|Decidir o que fazer | Fazer | Conectar tudo para ficar funcional
+|De manhazinha, implementar a classe atores | implementar atuações | Já ter feito, dormir
 
 Serie 1 - N Episodio
 
