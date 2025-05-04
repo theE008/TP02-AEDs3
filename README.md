@@ -1,8 +1,6 @@
-# ![Ícone](https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/54/Golden_Apple_JE2_BE2.png/revision/latest/thumbnail/width/360/height/360?cb=20200521041809) Relatório do TP02-AEDs3
+# ![Ícone](https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/54/Golden_Apple_JE2_BE2.png/revision/latest/thumbnail/width/20/height/20?cb=20200521041809) Relatório do TP02-AEDs3
 
 > 🧠 **Análise e Estrutura de Dados III** — Trabalho Prático 02  
-> 🎯 Implementação de gerenciamento de séries e atores usando árvores B+
-
 ---
 
 ## 📌 O que o trabalho de vocês faz?
@@ -46,11 +44,3 @@
 - [ ] Trabalho completo
 - [ ] Trabalho original (sem cópias)
 
----
-
-### 📷 Quer adicionar uma imagem ao lado do título?
-
-Você pode usar qualquer imagem hospedada online ou dentro do seu repositório. Exemplo com imagem local:
-
-```markdown
-# <img src="docs/logo.png" width="40" /> Relatório do TP02-AEDs3
