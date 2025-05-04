@@ -1,4 +1,4 @@
-# ![Ícone](https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/54/Golden_Apple_JE2_BE2.png/revision/latest/thumbnail/width/20/height/20?cb=20200521041809) Relatório do TP02-AEDs3
+# ![Ícone](https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/54/Golden_Apple_JE2_BE2.png/revision/latest/thumbnail/width/40/height/40?cb=20200521041809) Relatório do TP02-AEDs3
 
 > 🧠 **Análise e Estrutura de Dados III** — Trabalho Prático 02  
 ---
