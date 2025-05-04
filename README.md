@@ -1,6 +1,6 @@
 # ![Ícone](https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/54/Golden_Apple_JE2_BE2.png/revision/latest/thumbnail/width/40/height/40?cb=20200521041809) Relatório do TP02-AEDs3
 
-> 🧠 **Análise e Estrutura de Dados III** — Trabalho Prático 02  
+> 🧠 **Algoritimos e Estrutura de Dados III** — Trabalho Prático 02  
 ---
 
 ## 📌 O que o trabalho de vocês faz?
@@ -33,14 +33,14 @@
 
 ## ✅ Checklist de Requisitos
 
-- [ ] Inclusão, busca, alteração e exclusão de atores funcionando
-- [ ] Relacionamento entre séries e atores com árvores B+ funcionando
-- [ ] Consulta de atores de uma série
-- [ ] Consulta de séries de um ator
-- [ ] Remoção de séries limpa vínculos com atores
-- [ ] Inclusão de ator em série restrita a atores existentes
-- [ ] Remoção de ator verifica vínculos com séries
-- [ ] Funcionamento geral do trabalho validado
-- [ ] Trabalho completo
-- [ ] Trabalho original (sem cópias)
+- [x] Inclusão, busca, alteração e exclusão de atores funcionando
+- [x] Relacionamento entre séries e atores com árvores B+ funcionando
+- [x] Consulta de atores de uma série
+- [x] Consulta de séries de um ator
+- [x] Remoção de séries limpa vínculos com atores
+- [x] Inclusão de ator em série restrita a atores existentes
+- [x] Remoção de ator verifica vínculos com séries
+- [x] Funcionamento geral do trabalho validado
+- [x] Trabalho completo
+- [x] Trabalho original (sem cópias)
 
