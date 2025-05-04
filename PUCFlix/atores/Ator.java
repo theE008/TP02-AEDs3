@@ -10,9 +10,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
-import PUCFlix.episodios.Episodio;
+//import episodios.*;
 
 //////////////////////////////////////////////////
 // BIBLIOTECAS PRÓPRIAS
@@ -50,8 +50,8 @@ public class Ator implements EntidadeArquivo
     public int      getID   () {return    id;}
 
     // [setters]
-    public String   setNome (String   nome) {this.nome = nome;}
-    public int      setID   (int        id) {this.id   =   id;}
+    public void     setNome (String   nome) {this.nome = nome;}
+    public void     setID   (int        id) {this.id   =   id;}
 
     // to & from byte array
     public byte [] toByteArray () throws Exception

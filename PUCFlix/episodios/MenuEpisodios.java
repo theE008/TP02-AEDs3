@@ -84,7 +84,6 @@ public class MenuEpisodios
         int temporada = 0;
         LocalDate dataLancamento = LocalDate.now ();
         int Minutos = 0;
-        float avaliacao = 0F;
         String descricao = "";
         int id_serie = 0;
 
@@ -193,18 +192,6 @@ public class MenuEpisodios
         dadosCorretos = false;
         do 
         {
-            System.out.print ("Avaliação do episodio (0,0-10,0): ");
-            if (console.hasNextFloat () || console.hasNextInt ())
-            {
-                avaliacao = console.nextFloat ();
-                dadosCorretos = true;
-            }
-            console.nextLine ();
-        } while (!dadosCorretos);
-
-        dadosCorretos = false;
-        do 
-        {
             System.out.print ("Descrição do espisodio (min. de 10 letras): ");
             descricao = console.nextLine ();
             if (descricao.length ()>=10)
@@ -221,7 +208,7 @@ public class MenuEpisodios
         {
             try 
             {
-                Episodio e = new Episodio(nome, temporada, dataLancamento, Minutos, avaliacao, descricao, id_serie);
+                Episodio e = new Episodio(nome, temporada, dataLancamento, Minutos, descricao, id_serie);
                 arquivoEpsodio.create (e);
                 System.out.println ("Episódio incluído com sucesso.");
             } catch (Exception e) {
@@ -473,6 +460,7 @@ public class MenuEpisodios
                     try 
                     {
                         novaTemporada = Integer.parseInt (entrada);
+                        episodioEncontrado.setTemporada(novaTemporada);
                         break;
                     } catch (NumberFormatException e) 
                     {
@@ -570,37 +558,37 @@ public class MenuEpisodios
     {
 
         // Serie de id 1 - Fullmetal Alchemist: Brotherhood
-        arquivoEpsodio.create (new Episodio("A Lei da Troca Equivalente", 1, LocalDate.of (2009, 4, 5), 24, 9.5f, "Os irmãos Elric aprendem uma dura lição ao tentar ressuscitar sua mãe.", 1));
-        arquivoEpsodio.create (new Episodio("O Alquimista de Aço", 2, LocalDate.of (2009, 4, 12), 23, 8.7f, "Edward recebe o título de alquimista federal e parte em jornada com Alphonse.", 1));
+        arquivoEpsodio.create (new Episodio("A Lei da Troca Equivalente", 1, LocalDate.of (2009, 4, 5), 24, "Os irmãos Elric aprendem uma dura lição ao tentar ressuscitar sua mãe.", 1));
+        arquivoEpsodio.create (new Episodio("O Alquimista de Aço", 2, LocalDate.of (2009, 4, 12), 23, "Edward recebe o título de alquimista federal e parte em jornada com Alphonse.", 1));
 
         // Serie de id 2 - Stranger Things
-        arquivoEpsodio.create (new Episodio("O Desaparecimento", 1, LocalDate.of (2017, 1, 10), 25, 8.9f, "Na cidade de Hawkins, um garoto some misteriosamente após um blecaute.", 2));
-        arquivoEpsodio.create (new Episodio("A Garota com Poderes", 2, LocalDate.of (2017, 1, 17), 24, 9.1f, "Mike encontra uma garota com habilidades sobrenaturais chamada Eleven.", 2));
+        arquivoEpsodio.create (new Episodio("O Desaparecimento", 1, LocalDate.of (2017, 1, 10), 25, "Na cidade de Hawkins, um garoto some misteriosamente após um blecaute.", 2));
+        arquivoEpsodio.create (new Episodio("A Garota com Poderes", 2, LocalDate.of (2017, 1, 17), 24, "Mike encontra uma garota com habilidades sobrenaturais chamada Eleven.", 2));
 
         // Serie de id 3 - Shingeki no Kyojin (Attack on Titan)
-        arquivoEpsodio.create (new Episodio("Para Você, 2 Mil Anos no Futuro", 1, LocalDate.of (2013, 4, 6), 24, 9.0f, "Titãs rompem a Muralha Maria, destruindo a cidade de Eren.", 3));
+        arquivoEpsodio.create (new Episodio("Para Você, 2 Mil Anos no Futuro", 1, LocalDate.of (2013, 4, 6), 24, "Titãs rompem a Muralha Maria, destruindo a cidade de Eren.", 3));
 
         // Serie de id 4 - Kimetsu no Yaiba (Demon Slayer)
-        arquivoEpsodio.create (new Episodio("Crueldade", 1, LocalDate.of (2019, 4, 6), 24, 8.5f, "Tanjiro encontra sua família assassinada e decide proteger sua irmã Nezuko.", 4));
-        arquivoEpsodio.create (new Episodio("Treinamento de Sabito", 2, LocalDate.of (2019, 4, 13), 24, 8.7f, "Tanjiro enfrenta um duro treinamento para se tornar caçador de demônios.", 4));
+        arquivoEpsodio.create (new Episodio("Crueldade", 1, LocalDate.of (2019, 4, 6), 24, "Tanjiro encontra sua família assassinada e decide proteger sua irmã Nezuko.", 4));
+        arquivoEpsodio.create (new Episodio("Treinamento de Sabito", 2, LocalDate.of (2019, 4, 13), 24, "Tanjiro enfrenta um duro treinamento para se tornar caçador de demônios.", 4));
 
         // Serie de id 5 - Boku no Hero Academia (My Hero Academia)
-        arquivoEpsodio.create (new Episodio("Izuku Midoriya: O Nascimento de um Herói", 1, LocalDate.of (2016, 4, 3), 24, 9.0f, "Mesmo sem poderes, Izuku sonha em se tornar um herói.", 5));
+        arquivoEpsodio.create (new Episodio("Izuku Midoriya: O Nascimento de um Herói", 1, LocalDate.of (2016, 4, 3), 24, "Mesmo sem poderes, Izuku sonha em se tornar um herói.", 5));
 
         // Serie de id 6 - Steins;Gate
-        arquivoEpsodio.create (new Episodio("O Começo e o Fim do Ciclo", 1, LocalDate.of (2011, 4, 6), 24, 8.9f, "Rintarou descobre que pode enviar mensagens para o passado.", 6));
+        arquivoEpsodio.create (new Episodio("O Começo e o Fim do Ciclo", 1, LocalDate.of (2011, 4, 6), 24, "Rintarou descobre que pode enviar mensagens para o passado.", 6));
 
         // Serie de id 7 - Tokyo Revengers
-        arquivoEpsodio.create (new Episodio("Reviver", 1, LocalDate.of (2021, 4, 11), 24, 9.2f, "Takemichi volta ao passado para salvar sua ex-namorada de uma gangue violenta.", 7));
+        arquivoEpsodio.create (new Episodio("Reviver", 1, LocalDate.of (2021, 4, 11), 24, "Takemichi volta ao passado para salvar sua ex-namorada de uma gangue violenta.", 7));
 
         // Serie de id 8 - Jujutsu Kaisen
-        arquivoEpsodio.create (new Episodio("Ryomen Sukuna", 1, LocalDate.of (2020, 10, 3), 24, 8.7f, "Yuji come um dedo amaldiçoado e abriga uma entidade poderosa dentro de si.", 8));
+        arquivoEpsodio.create (new Episodio("Ryomen Sukuna", 1, LocalDate.of (2020, 10, 3), 24, "Yuji come um dedo amaldiçoado e abriga uma entidade poderosa dentro de si.", 8));
 
         // Serie de id 9 - Psycho-Pass
-        arquivoEpsodio.create (new Episodio("Crime Coletado", 1, LocalDate.of (2012, 10, 12), 24, 9.0f, "No futuro, a justiça é determinada por scanners psicológicos.", 9));
+        arquivoEpsodio.create (new Episodio("Crime Coletado", 1, LocalDate.of (2012, 10, 12), 24, "No futuro, a justiça é determinada por scanners psicológicos.", 9));
 
         // Serie de id 10 - Black Mirror
-        arquivoEpsodio.create (new Episodio("Códigos da Saudade", 1, LocalDate.of (2015, 10, 25), 24, 8.6f, "Uma jovem revive digitalmente seu namorado falecido usando IA experimental.", 10));
+        arquivoEpsodio.create (new Episodio("Códigos da Saudade", 1, LocalDate.of (2015, 10, 25), 24, "Uma jovem revive digitalmente seu namorado falecido usando IA experimental.", 10));
 
     }
 }

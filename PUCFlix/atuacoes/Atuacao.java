@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////
 // PACOTE
 
-package atuacao;
+package atuacoes;
 
 //////////////////////////////////////////////////
 // BIBLIOTECAS DO SISTEMA
@@ -10,7 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
 //////////////////////////////////////////////////
 // BIBLIOTECAS PRÓPRIAS
@@ -51,9 +51,9 @@ public class Atuacao implements EntidadeArquivo
     public int      getID_serie () {return    id_serie;}
 
     // [setters]
-    public int      setID       (int        id) {this.id   =       id;}
-    public int      setID_ator  (int   id_ator) {this.id   =  id_ator;}
-    public int      setID_serie (int  id_serie) {this.id   = id_serie;}
+    public void     setID       (int        id) {this.id   =       id;}
+    public void     setID_ator  (int   id_ator) {this.id   =  id_ator;}
+    public void     setID_serie (int  id_serie) {this.id   = id_serie;}
 
     // to & from byte array
     public byte [] toByteArray () throws Exception

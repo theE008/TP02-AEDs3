@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import episodios.*;
 import series.*;
+import atuacoes.*;
 
 //////////////////////////////////////////////////
 // Classe Principal
@@ -33,7 +34,8 @@ public class Principal
                 System.out.println ("> Início");
                 System.out.println ("1 - Series");
                 System.out.println ("2 - Episodios");
-                System.out.println ("3 - Povoar");
+                System.out.println("3 - Atores");
+                System.out.println ("4 - Povoar");
                 System.out.println ("0 - Sair");
                 
                 System.out.print("\nOpção: ");
@@ -57,6 +59,10 @@ public class Principal
                     break;
 
                     case 3:
+                        (new MenuAtuacao()).menu (servico);
+                    break;
+
+                    case 4:
                         (new MenuSeries ()).povoar ();
                         (new MenuEpisodios ()).povoar ();
                     break;
