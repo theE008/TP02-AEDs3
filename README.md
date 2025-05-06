@@ -18,16 +18,16 @@
 ## 🧪 Experiência
 
 ### ✅ Vocês implementaram todos os requisitos?
-- [ ]
+- [✅] Sim.
 
 ### 🧩 Houve alguma operação mais difícil?
-- [ ]
+- [✅] Sim, devido a o trabalho exigir uma nova funcionalidade ao projeto acreditamos até natural termos uma certa dificuldade na implementação do relacionamento N:N, em especial na criação do relacionamento intermediario para que fosse possivel o seu desenvolvimento.
 
 ### 🧱 Vocês enfrentaram algum desafio na implementação?
-- [ ]
+- [✅]
 
 ### 🎯 Os resultados foram alcançados?
-- [ ]
+- [✅]
 
 
 
